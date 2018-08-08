@@ -1,4 +1,6 @@
-<?php function konversi($x){
+<?php 
+error_reporting(0);
+function konversi($x){
   
   $x = abs($x);
   $angka = array ("","satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
@@ -30,8 +32,7 @@
  function tkoma($x){
   $str = stristr($x,",");
   $ex = explode(',',$x);
-  $a=0;
-  //var_dump(($ex));
+
   if (count($ex)>1) {
   	if(($ex[1]/10) >= 1){
    $a = abs($ex[1]);
@@ -39,10 +40,10 @@
   $string = array("nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan",   "sembilan","sepuluh", "sebelas");
   $temp = "";
  
-  $a2 = $ex[1]/10;
+  $a2  = $ex[1]/10;
   $pjg = strlen($str);
-  $i =1;
-    
+  $i   =1;
+  $a = abs($ex[1]); //iniii
   
   if($a>=1 && $a< 12){   
    $temp .= " ".$string[$a];
@@ -67,22 +68,22 @@
  function terbilang($x){
   $str = stristr($x,",");
   $ex = explode(',',$x);
-  var_dump($ex);
-  echo $x;
+
+  $poin = trim(tkoma($x)); 
   if($x<0){
-   $hasil = "minus ".trim(konversi(x));
-  }
-  elseif(count($ex)>1){
+   $hasil = "minus ".trim(konversi($x));
+  }elseif($ex){
    $poin = trim(tkoma($x));
    $hasil = trim(konversi($x));
-   if($poin){
+  }
+
+$poin = trim(tkoma($x)); 
+if($poin){
    $hasil = $hasil." koma ".$poin;
   }else{
    $hasil = $hasil;
   }
   return $hasil;  
  }
-  }
-
  
 ?>

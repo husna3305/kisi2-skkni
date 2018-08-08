@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2018 at 06:41 AM
+-- Generation Time: Aug 08, 2018 at 11:38 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -19,6 +19,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `soal-kisi2-skkni`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peserta`
+--
+
+CREATE TABLE IF NOT EXISTS `peserta` (
+  `nik` char(18) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `noHp` char(15) NOT NULL,
+  `email` varchar(70) NOT NULL,
+  `idSkema` int(2) NOT NULL,
+  `tempatUjikom` varchar(50) NOT NULL,
+  `rekomendasi` varchar(30) NOT NULL,
+  `tglTerbitSertifikat` date NOT NULL,
+  `tglLahir` date NOT NULL,
+  `organisasi` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `peserta`
+--
+
+INSERT INTO `peserta` (`nik`, `nama`, `noHp`, `email`, `idSkema`, `tempatUjikom`, `rekomendasi`, `tglTerbitSertifikat`, `tglLahir`, `organisasi`) VALUES
+('1506021508930007', 'Ahmad Husna Ahadi', '082282535844', 'husna3305@gmail.com', 1, 'Jambi', 'belum', '2018-08-09', '1993-08-15', 'STMIK NH');
 
 -- --------------------------------------------------------
 
@@ -43,6 +69,12 @@ INSERT INTO `skemasertifikasi` (`idSkema`, `skemaSertifikasi`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `peserta`
+--
+ALTER TABLE `peserta`
+ ADD PRIMARY KEY (`nik`);
 
 --
 -- Indexes for table `skemasertifikasi`

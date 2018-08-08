@@ -9,8 +9,6 @@
   <li class="nav-item">
     <a class="nav-link <?php if ($menus=='laporan'): ?>active<?php endif ?>" href="<?php echo site_url('peserta/laporan') ?>">Laporan Jumlah Peserta</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($menus=='backup'): ?>active<?php endif ?>" href="<?php echo site_url('backup') ?>">Backup Database</a>
-  </li>
+  
 </ul>
 </div>
