@@ -41,7 +41,7 @@
 					</tr>
 				<?php $no++; endforeach ?>
 			</table>
-			<b>Jumlah Peserta : <?php echo $no ?></b>
+			<b>Jumlah Peserta : <?php echo $no-1 ?></b>
 		</div>
 	</div>
 </div>
