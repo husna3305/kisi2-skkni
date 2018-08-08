@@ -82,23 +82,36 @@
   	e.preventDefault();
   	kosong();
   	//Submit Data Ke Controller
-    if (!$('#nik').val())
+  	var nik = $('#nik').val();
+  	var nama = $('#nama').val();
+  	var noHp = $('#noHp').val();
+  	var email = $('#email').val();
+  	var idSkema = $('#idSkema').val();
+  	var tempatUjikom = $('#tempatUjikom').val();
+  	var rekomendasi = $('#rekomendasi').val();
+  	var tglTerbitSertifikat = $('#tglTerbitSertifikat').val();
+  	var tglLahir = $('#tglLahir').val();
+  	var organisasi = $('#organisasi').val();
+
+    if (!nik)
     {
     	eNik.style.display='block';
     }
-    if (!$('#nama').val())
+    if (!nama)
     {
     	eNama.style.display='block';
     }
-    if (!!eNama && !!eNik)
+    if (!!nik && !!nama)
     {
+  	e.preventDefault();
+
     	$.ajax({
 	       url:'<?php echo site_url('peserta/insert') ?>',
 	       type: 'POST',
 	       data: $("#form1").serialize(),
 	       success: function(result){
 	          alert(result);
-	          window.location = "<?php echo site_url('peserta') ?>";
+	        //  window.location = "<?php echo site_url('peserta') ?>";
 	       },
 	       error: function(){
 	           alert("Gagal")
