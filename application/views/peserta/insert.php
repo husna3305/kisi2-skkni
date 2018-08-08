@@ -17,7 +17,7 @@
 				  <div class="form-group">
 				    <label for="noHp">No. Telp / No. HP : </label>
 				    <input type="text" class="form-control" id="noHp" name="noHp">
-				    <small id="eNik" class="form-text text-muted" style="color: red;display: none">Mohon isi No. Telp / No. HP</small>
+				    <small id="eNoHp" class="form-text text-muted" style="color: red;display: none">Mohon isi No. Telp / No. HP</small>
 				  </div>
 
 				  <div class="form-group">
@@ -26,17 +26,17 @@
 				    <small id="eEmail" class="form-text text-muted" style="color: red;display: none">Mohon isi E-Mail</small>
 				  </div>
 				  <div class="form-group">
-				    <label for="angka2">Skema Sertifikasi : </label>
-				    <select id="aritmatika" name="aritmatika" class="form-control">
+				    <label for="idSkema">Skema Sertifikasi : </label>
+				    <select id="idSkema" name="idSkema" id="idSkema" class="form-control">
 				    <?php foreach ($skema as $skk): ?>
-				    	<option><?php echo $skk->skemaSertifikasi ?></option>
+				    	<option value="<?php echo $skk->idSkema ?>"><?php echo $skk->skemaSertifikasi ?></option>
 				    <?php endforeach ?>
 					
 				    </select>
 				  </div>
 				  <div class="form-group">
-				    <label for="idTempatUjikom">Tempat Uji Kompetensi : </label>
-				    <input type="text" class="form-control" id="idTempatUjikom" name="idTempatUjikom">
+				    <label for="tempatUjikom">Tempat Uji Kompetensi : </label>
+				    <input type="text" class="form-control" id="tempatUjikom" name="tempatUjikom">
 				    <small id="eTptUjikom" class="form-text text-muted" style="color: red;display: none">Mohon isi Tempat Uji Kompetensi</small>
 				  </div>
 				  <div class="form-group">
@@ -47,13 +47,13 @@
 
 				  <div class="form-group">
 				    <label for="tglTerbitSertifikat">Tanggal Terbit Sertifikat : </label>
-				    <input type="text" class="form-control" id="tglTerbitSertifikat" name="tglTerbitSertifikat" >
+				    <input type="date" class="form-control" id="tglTerbitSertifikat" name="tglTerbitSertifikat" >
 				    <small id="eTglSertifikat" class="form-text text-muted" style="color: red;display: none">Mohon isi Tanggal Terbit Sertifikat</small>
 				  </div>
 
 				  <div class="form-group">
 				    <label for="tglLahir">Tanggal Lahir : </label>
-				    <input type="text" class="form-control" id="tglLahir" name="tglLahir" placeholder="Mohon Isi Tanggal Lahir">
+				    <input type="date" class="form-control" id="tglLahir" name="tglLahir" placeholder="Mohon Isi Tanggal Lahir">
 				    <small id="eTglLahir" class="form-text text-muted" style="color: red;display: none">Mohon isi Tanggal Lahir</small>
 				  </div>
 
@@ -75,39 +75,36 @@
  $(function(){
  	function kosong()
  	{
-    	eAngka1.style.display='none';
-    	eAngka2.style.display='none';
+    	eNik.style.display='none';
+    	eNama.style.display='none';
  	}
   $(".btn_submit").click(function(e){
+  	e.preventDefault();
   	kosong();
-  	var angka1=$('#angka1').val();
-  	var angka2=$('#angka2').val();
   	//Submit Data Ke Controller
-    if (!angka1)
+    if (!$('#nik').val())
     {
-    	eAngka1.style.display='block';
+    	eNik.style.display='block';
     }
-    if (!angka2)
+    if (!$('#nama').val())
     {
-    	eAngka2.style.display='block';
+    	eNama.style.display='block';
     }
-    if (!!angka1 && !!angka2)
+    if (!!eNama && !!eNik)
     {
     	$.ajax({
-	       url:'<?php echo site_url('aritmatika/hitung') ?>',
+	       url:'<?php echo site_url('peserta/insert') ?>',
 	       type: 'POST',
 	       data: $("#form1").serialize(),
 	       success: function(result){
-	           data=result.split("||");
-						$("#terbilang").text(data[0]);
-						$("#hasil").text(data[1]);
+	          alert(result);
+	          window.location = "<?php echo site_url('peserta') ?>";
 	       },
 	       error: function(){
 	           alert("Gagal")
 	       }
 	   });
     }
-   e.preventDefault();
  });
 });
 </script>

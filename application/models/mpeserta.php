@@ -8,7 +8,7 @@ class mpeserta extends CI_Model {
         parent::__construct();
     }
 
-    public function get_all()
+    public function getPesertaAll()
     {
         $sql = "select * from peserta
                 join skemasertifikasi on peserta.idSkema = skemasertifikasi.idSkema
@@ -16,7 +16,7 @@ class mpeserta extends CI_Model {
         return $this->db->query($sql);
     }
 
-    public function skemasertifikasi()
+    public function skemaSertifikasi()
     {
         $sql = "select * from skemasertifikasi
                 ";
