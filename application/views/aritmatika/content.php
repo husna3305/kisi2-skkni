@@ -5,12 +5,12 @@
 				<form method="POST" id="form1">
 				  <div class="form-group">
 				    <label for="angka1">Masukkkan Angka Pertama : </label>
-				    <input type="text" class="form-control" id="angka1" name="angka1" placeholder="Masukkan Angka Pertama">
+				    <input type="number" class="form-control" id="angka1" name="angka1" placeholder="Masukkan Angka Pertama">
 				    <small id="eAngka1" class="form-text text-muted" style="color: red;display: none">Mohon untuk memasukkan angka pertama</small>
 				  </div>
 				  <div class="form-group">
 				    <label for="angka2">Masukkkan Angka Kedua : </label>
-				    <input type="number" class="form-control" id="angka2" name="angka2" placeholder="Masukkan Angka Pertama">
+				    <input type="number" class="form-control" id="angka2" name="angka2" placeholder="Masukkan Angka Kedua">
 				    <small id="eAngka2" class="form-text text-muted" style="color: red;display: none">Mohon untuk memasukkan angka kedua</small>
 				  </div>
 				  <div class="form-group">

@@ -11,9 +11,26 @@ class peserta extends CI_Controller {
 
 	public function index()
 	{
+		$data['menus'] = $this->uri->segment(1);
 		$data['dataPeserta'] = $this->mpeserta->getPesertaAll()->result();
 		$this->template->template('peserta/index',$data);
 	}
+
+	public function laporan()
+	{
+		if (!!$this->input->post('tglLahir')) 
+		{
+			$data['menus'] = $this->uri->segment(2);
+			$data['tgl'] = $this->input->post('tglLahir');
+			$data['jml'] = $this->mpeserta->getPesertaJumlahByTanggal($data['tgl'])->row();
+			$this->template->template('peserta/laporanjumlahhasil',$data);
+		}else
+		{
+			$data['menus'] = $this->uri->segment(2);
+			$this->template->template('peserta/laporanjumlah',$data);
+		}
+	}
+
 	public function insert()
 	{
 		if (!!$this->input->post('nik')) {
@@ -32,6 +49,7 @@ class peserta extends CI_Controller {
 				echo "Sukses";
 			}
 		}else{
+		$data['menus'] = $this->uri->segment(1);
 			$data['skema'] = $this->mpeserta->skemaSertifikasi()->result();
 			$this->template->template('peserta/insert',$data);
 		}

@@ -1,26 +1,89 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
-	/** * Terbilang Helper * * 
-	@package	CodeIgniter * 
-	@subpackage	Helpers * 
-	@category	Helpers * 
-	@author	Gede Lumbung * 
-	@link	http://gedelumbung.com */ 
-if ( ! function_exists('number_to_words')) { 	
-	function number_to_words($number) 	
-	{ 		
-		$before_comma = trim(to_word($number)); 		
-		$after_comma = trim(comma($number)); 		
-		return ucwords($results = $before_comma.' koma '.$after_comma); 	
-	} 	
-	function to_word($number) 	
-	{ 		
-		$words = ""; 		
-		$arr_number = array( 		"", 		"satu", 		"dua", 		"tiga", 		"empat", 		"lima", 		"enam", 		"tujuh", 		"delapan", 		"sembilan", 		"sepuluh", 		"sebelas");
-		if($number<12) 		
-		{ 			
-			$words = " ".$arr_number[$number]; 		
-		} 		
-		else if($number<20) 		
-		{ 			
-			$words = to_word($number-10)." belas"; 		
-		} 		else if($number<100) 		{ 			$words = to_word($number/10)." puluh ".to_word($number%10); 		} 		else if($number<200) 		{ 			$words = "seratus ".to_word($number-100); 		} 		else if($number<1000) 		{ 			$words = to_word($number/100)." ratus ".to_word($number%100); 		} 		else if($number<2000) 		{ 			$words = "seribu ".to_word($number-1000); 		} 		else if($number<1000000) 		{ 			$words = to_word($number/1000)." ribu ".to_word($number%1000); 		} 		else if($number<1000000000) 		{ 			$words = to_word($number/1000000)." juta ".to_word($number%1000000); 		} 		else 		{ 			$words = "undefined"; 		} 		return $words; 	} 	function comma($number) 	{ 		$after_comma = stristr($number,','); 		$arr_number = array( 		"nol", 		"satu", 		"dua", 		"tiga", 		"empat", 		"lima", 		"enam", 		"tujuh", 		"delapan", 		"sembilan"); 		$results = ""; 		$length = strlen($after_comma); 		$i = 1; 		while($i<$length) 		{ 			$get = substr($after_comma,$i,1); 			$results .= " ".$arr_number[$get]; 			$i++; 		} 		return $results; 	} }
+<?php 
+error_reporting(0);
+function konversi($x){
+  
+  $x = abs($x);
+  $angka = array ("","satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+  $temp = "";
+  
+  if($x < 12){
+   $temp = " ".$angka[$x];
+  }else if($x<20){
+   $temp = konversi($x - 10)." belas";
+  }else if ($x<100){
+   $temp = konversi($x/10)." puluh". konversi($x%10);
+  }else if($x<200){
+   $temp = " seratus".konversi($x-100);
+  }else if($x<1000){
+   $temp = konversi($x/100)." ratus".konversi($x%100);   
+  }else if($x<2000){
+   $temp = " seribu".konversi($x-1000);
+  }else if($x<1000000){
+   $temp = konversi($x/1000)." ribu".konversi($x%1000);   
+  }else if($x<1000000000){
+   $temp = konversi($x/1000000)." juta".konversi($x%1000000);
+  }else if($x<1000000000000){
+   $temp = konversi($x/1000000000)." milyar".konversi($x%1000000000);
+  }
+  
+  return $temp;
+ }
+  
+ function tkoma($x){
+  $str = stristr($x,",");
+  $ex = explode(',',$x);
+
+  if (count($ex)>1) {
+  	if(($ex[1]/10) >= 1){
+   $a = abs($ex[1]);
+  }
+  $string = array("nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan",   "sembilan","sepuluh", "sebelas");
+  $temp = "";
+ 
+  $a2  = $ex[1]/10;
+  $pjg = strlen($str);
+  $i   =1;
+  $a = abs($ex[1]); //iniii
+  
+  if($a>=1 && $a< 12){   
+   $temp .= " ".$string[$a];
+  }else if($a>12 && $a < 20){   
+   $temp .= konversi($a - 10)." belas";
+  }else if ($a>20 && $a<100){   
+   $temp .= konversi($a / 10)." puluh". konversi($a % 10);
+  }else{
+   if($a2<1){
+    
+    while ($i<$pjg){     
+     $char = substr($str,$i,1);     
+     $i++;
+     $temp .= " ".$string[$char];
+    }
+   }
+  }  
+  return $temp;
+  }
+ }
+ 
+ function terbilang($x){
+  $str = stristr($x,",");
+  $ex = explode(',',$x);
+
+  $poin = trim(tkoma($x)); 
+  if($x<0){
+   $hasil = "minus ".trim(konversi($x));
+  }elseif($ex){
+   $poin = trim(tkoma($x));
+   $hasil = trim(konversi($x));
+  }
+
+$poin = trim(tkoma($x)); 
+if($poin){
+   $hasil = $hasil." koma ".$poin;
+  }else{
+   $hasil = $hasil;
+  }
+  return $hasil;  
+ }
+ 
+?>

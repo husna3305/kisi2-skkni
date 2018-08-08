@@ -20,7 +20,7 @@
 					<th>Tanggal Terbit Sertifikat</th>
 					<th>Tanggal Lahir</th>
 					<th>Organisasi</th>
-					<th>Aksi</th>
+					<!--<th>Aksi</th> -->
 				</thead>
 				<?php $no=1; foreach ($dataPeserta as $d_pes): ?>
 					<tr>
@@ -35,12 +35,13 @@
 						<td><?php echo $d_pes->tglTerbitSertifikat ?></td>
 						<td><?php echo $d_pes->tglLahir ?></td>
 						<td><?php echo $d_pes->organisasi ?></td>
-						<td>
+						<!--<td>
 							<a href="<?php echo site_url('peserta/update/'.$d_pes->nik) ?>" class="btn btn-warning btn-sm">Update</a> | <a href="<?php echo site_url('peserta/delete/'.$d_pes->nik) ?>" class="btn btn-danger btn-sm">Hapus</a>
-						</td>
+						</td> -->
 					</tr>
 				<?php $no++; endforeach ?>
 			</table>
+			<b>Jumlah Peserta : <?php echo $no ?></b>
 		</div>
 	</div>
 </div>
