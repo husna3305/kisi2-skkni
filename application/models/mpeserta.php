@@ -16,6 +16,12 @@ class mpeserta extends CI_Model {
         return $this->db->query($sql);
     }
 
+    public function getPesertaJumlahByTanggal($tgl)
+    {
+        $sql = "select count(nik) as count from peserta where tglLahir = '$tgl'";
+        return $this->db->query($sql);
+    }
+
     public function skemaSertifikasi()
     {
         $sql = "select * from skemasertifikasi

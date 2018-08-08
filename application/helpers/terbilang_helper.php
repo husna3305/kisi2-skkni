@@ -30,6 +30,7 @@
  function tkoma($x){
   $str = stristr($x,",");
   $ex = explode(',',$x);
+  $a=0;
   //var_dump(($ex));
   if (count($ex)>1) {
   	if(($ex[1]/10) >= 1){
@@ -66,20 +67,22 @@
  function terbilang($x){
   $str = stristr($x,",");
   $ex = explode(',',$x);
-
+  var_dump($ex);
+  echo $x;
   if($x<0){
    $hasil = "minus ".trim(konversi(x));
-  }elseif($ex){
+  }
+  elseif(count($ex)>1){
    $poin = trim(tkoma($x));
    $hasil = trim(konversi($x));
-  }
-  
-if($poin){
+   if($poin){
    $hasil = $hasil." koma ".$poin;
   }else{
    $hasil = $hasil;
   }
   return $hasil;  
  }
+  }
+
  
 ?>

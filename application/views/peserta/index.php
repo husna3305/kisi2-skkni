@@ -4,7 +4,7 @@
 			<!--<a href="<?php echo site_url('peserta/insert') ?>" class="btn btn-primary" >Cari</a><br> -->
 		</div>
 		<div class="col-md-6" style="padding-bottom: 10px;" align="right">
-			<a href="<?php echo site_url('peserta/filter') ?>" class="btn btn-success" >Filter</a>&nbsp;&nbsp;<a href="<?php echo site_url('peserta/insert') ?>" class="btn btn-primary" >Tambah</a><br>
+			<a href="<?php echo site_url('peserta/insert') ?>" class="btn btn-primary" >Tambah</a><br>
 		</div>
 		<div class="col-md-12">
 			<table class="table table-bordered table-hover table-condensed table-striped font-12">
@@ -41,6 +41,7 @@
 					</tr>
 				<?php $no++; endforeach ?>
 			</table>
+			<b>Jumlah Peserta : <?php echo $no ?></b>
 		</div>
 	</div>
 </div>

@@ -12,7 +12,8 @@ class aritmatika extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->template('aritmatika/content');
+		$data['menus'] = $this->uri->segment(1);
+		$this->template->template('aritmatika/content',$data);
 	}
 
 	public function hitung()
