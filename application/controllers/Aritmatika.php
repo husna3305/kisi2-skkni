@@ -50,6 +50,7 @@ class aritmatika extends CI_Controller {
 			$angka1=$this->input->post('angka1');
 			$angka2=$this->input->post('angka2');
 			$x = bagi($angka1, $angka2);
+			//$x=4.99;
 			$x_rep = str_replace(".", ",", "$x");
 			echo ucwords(terbilang($x_rep)).'||'.$x;
 		}

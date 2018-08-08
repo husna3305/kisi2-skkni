@@ -30,8 +30,8 @@
  function tkoma($x){
   $str = stristr($x,",");
   $ex = explode(',',$x);
-  
-  if ($ex<1) {
+  //var_dump(($ex));
+  if (count($ex)>1) {
   	if(($ex[1]/10) >= 1){
    $a = abs($ex[1]);
   }
@@ -64,9 +64,12 @@
  }
  
  function terbilang($x){
+  $str = stristr($x,",");
+  $ex = explode(',',$x);
+
   if($x<0){
    $hasil = "minus ".trim(konversi(x));
-  }else{
+  }elseif($ex){
    $poin = trim(tkoma($x));
    $hasil = trim(konversi($x));
   }
