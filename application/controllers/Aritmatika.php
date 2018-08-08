@@ -27,7 +27,7 @@ class aritmatika extends CI_Controller {
 			$angka2=$this->input->post('angka2');
 			$x = tambah($angka1, $angka2);
 			$x_rep = str_replace(".", ",", "$x");
-			echo ucwords(number_to_words($x_rep)).'||'.$x;
+			echo ucwords(terbilang($x_rep)).'||'.$x;
 		}
 		elseif($this->input->post('aritmatika')=='-')
 		{
@@ -35,7 +35,7 @@ class aritmatika extends CI_Controller {
 			$angka2=$this->input->post('angka2');
 			$x = kurang($angka1, $angka2);
 			$x_rep = str_replace(".", ",", "$x");
-			echo ucwords(number_to_words($x_rep)).'||'.$x;
+			echo ucwords(terbilang($x_rep)).'||'.$x;
 		}
 		elseif($this->input->post('aritmatika')=='*')
 		{
@@ -43,7 +43,7 @@ class aritmatika extends CI_Controller {
 			$angka2=$this->input->post('angka2');
 			$x = kali($angka1, $angka2);
 			$x_rep = str_replace(".", ",", "$x");
-			echo ucwords(number_to_words($x_rep)).'||'.$x;
+			echo ucwords(terbilang($x_rep)).'||'.$x;
 		}
 		elseif($this->input->post('aritmatika')=='/')
 		{
@@ -51,7 +51,7 @@ class aritmatika extends CI_Controller {
 			$angka2=$this->input->post('angka2');
 			$x = bagi($angka1, $angka2);
 			$x_rep = str_replace(".", ",", "$x");
-			echo ucwords(number_to_words($x_rep)).'||'.$x;
+			echo ucwords(terbilang($x_rep)).'||'.$x;
 		}
 	}
 }
