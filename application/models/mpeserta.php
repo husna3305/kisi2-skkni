@@ -16,6 +16,12 @@ class mpeserta extends CI_Model {
         return $this->db->query($sql);
     }
 
+    public function getPesertaOne($nik)
+    {
+        $sql = "select * from peserta where nik='$nik'";
+        return $this->db->query($sql);
+    }
+
     public function getPesertaJumlahByTanggal($tgl)
     {
         $sql = "select count(nik) as count from peserta where tglLahir = '$tgl'";
@@ -43,8 +49,7 @@ class mpeserta extends CI_Model {
 
     function delete($nik)
     {
-     //   $this->db->delete('katedgori_barang', $nik);
-        $this->db->where_in('nik', $nik);
+        $this->db->where('nik', $nik);
         $this->db->delete('peserta');
         return TRUE;
     }

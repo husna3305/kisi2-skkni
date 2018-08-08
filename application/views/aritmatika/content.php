@@ -14,6 +14,11 @@
 				    <small id="eAngka2" class="form-text text-muted" style="color: red;display: none">Mohon untuk memasukkan angka kedua</small>
 				  </div>
 				  <div class="form-group">
+				    <label for="angka3">Masukkkan Angka Ketiga : </label>
+				    <input type="number" class="form-control" id="angka3" name="angka3" placeholder="Masukkan Angka Ketiga">
+				    <small id="eAngka3" class="form-text text-muted" style="color: red;display: none">Mohon untuk memasukkan angka ketiga</small>
+				  </div>
+				  <div class="form-group">
 				    <label for="angka2">Aritmatika : </label>
 				    <select id="aritmatika" name="aritmatika" class="form-control">
 				    	<option value="+">+</option>
@@ -51,6 +56,7 @@
   	kosong();
   	var angka1=$('#angka1').val();
   	var angka2=$('#angka2').val();
+  	var angka3=$('#angka3').val();
   	//Submit Data Ke Controller
     if (!angka1)
     {

@@ -46,7 +46,7 @@ class peserta extends CI_Controller {
 									'organisasi' => $this->input->post('organisasi')
 								);
 			if ($this->mpeserta->insert($data_insert)) {
-				echo "Sukses";
+				redirect(site_url('peserta'),'refresh');
 			}
 		}else{
 		$data['menus'] = $this->uri->segment(1);
@@ -55,12 +55,37 @@ class peserta extends CI_Controller {
 		}
 	}
 
+	public function update($nik=null)
+	{
+		if (!!$this->input->post('nik')) {
+			$data_upd[0]=array('nik' => $this->input->post('nik'),
+									'nama' => $this->input->post('nama'),
+									'noHp' => $this->input->post('noHp'),
+									'email' => $this->input->post('email'),
+									'idSkema' => $this->input->post('idSkema'),
+									'tempatUjikom' => $this->input->post('tempatUjikom'),
+									'rekomendasi' => $this->input->post('rekomendasi'),
+									'tglTerbitSertifikat' => $this->input->post('tglTerbitSertifikat'),
+									'tglLahir' => $this->input->post('tglLahir'),
+									'organisasi' => $this->input->post('organisasi')
+								);
+			if ($this->mpeserta->update($data_upd)) {
+				redirect(site_url('peserta'),'refresh');
+			}
+		}else{
+		$data['menus'] = $this->uri->segment(1);
+			$data['skema'] = $this->mpeserta->skemaSertifikasi()->result();
+			$data['peserta'] = $this->mpeserta->getPesertaOne($nik)->row();
+			$this->template->template('peserta/update',$data);
+		}
+	}
+
 	public function delete($nik=null)
 	{
 		if (!!$nik) {
-			$data_insert[0];
-			if ($this->mpeserta->insert($data_insert)) {
-				echo "Sukses";
+			if ($this->mpeserta->delete($nik)) {
+			redirect(site_url('peserta'),'refresh');
+				
 			}
 		}else{
 			redirect(site_url('peserta'),'refresh');
