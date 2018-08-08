@@ -1,18 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class aritmatika extends CI_Controller {
+class peserta extends CI_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('aritmatika');
-		$this->load->helper('terbilang');
+		$this->load->model('mpeserta');
 	}
 
-	public function index()
+	public function insert()
 	{
-		$this->template->template('aritmatika/content');
+		if (!!$this->input->post('submit')) {
+			# code...
+		}else{
+			$data['skema'] = $this->mpeserta->skemasertifikasi()->result();
+			$this->template->template('peserta/insert',$data);
+		}
 	}
 
 	public function hitung()
